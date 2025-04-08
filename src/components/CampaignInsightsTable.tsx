@@ -1,7 +1,7 @@
 
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ChartBarIcon, TrendingUpIcon, TrendingDownIcon } from "lucide-react";
+import { ChartBarIcon, TrendingUpIcon, TrendingDownIcon, BadgeIcon } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 // In a real application, these would come from an API or database
@@ -12,6 +12,7 @@ const campaignMetrics = [
     industryAvg: 21.2,
     topPerformers: 35.6,
     comparison: "above-average", // above-average, below-average, excellent
+    insight: "Your open rates exceed industry average, indicating strong subject lines and sender reputation.",
   },
   {
     metric: "Click-Through Rate",
@@ -19,6 +20,7 @@ const campaignMetrics = [
     industryAvg: 2.6,
     topPerformers: 5.1,
     comparison: "above-average",
+    insight: "Higher than average CTR suggests your content and CTAs are performing well.",
   },
   {
     metric: "Click-to-Open Rate",
@@ -26,6 +28,7 @@ const campaignMetrics = [
     industryAvg: 12.3,
     topPerformers: 18.9,
     comparison: "above-average",
+    insight: "Your CTOR shows engaged subscribers finding value in your content.",
   },
   {
     metric: "Bounce Rate",
@@ -33,6 +36,7 @@ const campaignMetrics = [
     industryAvg: 1.0,
     topPerformers: 0.5,
     comparison: "below-average",
+    insight: "Higher bounce rate than industry standard indicates list hygiene issues.",
   },
   {
     metric: "Unsubscribe Rate",
@@ -40,6 +44,7 @@ const campaignMetrics = [
     industryAvg: 0.25,
     topPerformers: 0.10,
     comparison: "average",
+    insight: "Your unsubscribe rate is in line with industry averages.",
   },
   {
     metric: "Spam Complaints",
@@ -47,6 +52,7 @@ const campaignMetrics = [
     industryAvg: 0.01,
     topPerformers: 0.001,
     comparison: "below-average",
+    insight: "Higher spam complaint rate suggests content or frequency issues.",
   },
   {
     metric: "List Growth Rate",
@@ -54,6 +60,7 @@ const campaignMetrics = [
     industryAvg: 2.5,
     topPerformers: 5.0,
     comparison: "above-average",
+    insight: "Your list growth exceeds industry standards, showing effective acquisition.",
   },
   {
     metric: "Email Delivery Rate",
@@ -61,6 +68,7 @@ const campaignMetrics = [
     industryAvg: 98.0,
     topPerformers: 99.5,
     comparison: "average",
+    insight: "Your delivery rate meets industry standards but has room to improve.",
   },
   {
     metric: "Revenue per Email",
@@ -68,6 +76,7 @@ const campaignMetrics = [
     industryAvg: 0.35,
     topPerformers: 0.85,
     comparison: "above-average",
+    insight: "Revenue per email above average shows effective conversion strategies.",
   },
 ];
 
@@ -117,6 +126,7 @@ const CampaignInsightsTable = () => {
                 <TableHead className="text-right">Industry Average</TableHead>
                 <TableHead className="text-right">Top Performers</TableHead>
                 <TableHead>Comparison</TableHead>
+                <TableHead>Insight</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -132,6 +142,7 @@ const CampaignInsightsTable = () => {
                   <TableCell className="text-right">{metric.industryAvg}%</TableCell>
                   <TableCell className="text-right">{metric.topPerformers}%</TableCell>
                   <TableCell>{getComparisonBadge(metric.comparison)}</TableCell>
+                  <TableCell className="text-sm text-muted-foreground">{metric.insight}</TableCell>
                 </TableRow>
               ))}
             </TableBody>

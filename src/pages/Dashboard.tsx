@@ -54,20 +54,33 @@ const Dashboard = () => {
           <MetricsOverview />
           <Tabs defaultValue="charts" className="w-full">
             <TabsList className="mb-4">
-              <TabsTrigger value="charts">Charts</TabsTrigger>
-              <TabsTrigger value="table">Benchmark Table</TabsTrigger>
+              <TabsTrigger value="charts">Charts & Insights</TabsTrigger>
+              <TabsTrigger value="table">Benchmark Analysis</TabsTrigger>
+              <TabsTrigger value="combined">Combined View</TabsTrigger>
             </TabsList>
             <TabsContent value="charts">
               <div className="grid gap-4 md:grid-cols-4">
                 <PerformanceChart />
               </div>
-              <div className="grid gap-4 md:grid-cols-4 mt-4">
+              <div className="grid gap-4 md:grid-cols-2 mt-4">
                 <AiInsights />
                 <RecommendationList />
               </div>
             </TabsContent>
             <TabsContent value="table">
               <CampaignInsightsTable />
+            </TabsContent>
+            <TabsContent value="combined">
+              <div className="grid gap-4 md:grid-cols-4">
+                <PerformanceChart />
+              </div>
+              <div className="mt-6">
+                <CampaignInsightsTable />
+              </div>
+              <div className="grid gap-4 md:grid-cols-2 mt-6">
+                <AiInsights />
+                <RecommendationList />
+              </div>
             </TabsContent>
           </Tabs>
         </div>
