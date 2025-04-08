@@ -8,8 +8,10 @@ import MetricsOverview from "@/components/MetricsOverview";
 import PerformanceChart from "@/components/PerformanceChart";
 import AiInsights from "@/components/AiInsights";
 import RecommendationList from "@/components/RecommendationList";
+import CampaignInsightsTable from "@/components/CampaignInsightsTable";
 import { Button } from "@/components/ui/button";
 import { UploadIcon } from "lucide-react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Dashboard = () => {
   const [hasData, setHasData] = useState(false);
@@ -50,13 +52,24 @@ const Dashboard = () => {
         <div className="max-w-screen-xl mx-auto space-y-6">
           <DashboardHeader />
           <MetricsOverview />
-          <div className="grid gap-4 md:grid-cols-4">
-            <PerformanceChart />
-          </div>
-          <div className="grid gap-4 md:grid-cols-4">
-            <AiInsights />
-            <RecommendationList />
-          </div>
+          <Tabs defaultValue="charts" className="w-full">
+            <TabsList className="mb-4">
+              <TabsTrigger value="charts">Charts</TabsTrigger>
+              <TabsTrigger value="table">Benchmark Table</TabsTrigger>
+            </TabsList>
+            <TabsContent value="charts">
+              <div className="grid gap-4 md:grid-cols-4">
+                <PerformanceChart />
+              </div>
+              <div className="grid gap-4 md:grid-cols-4 mt-4">
+                <AiInsights />
+                <RecommendationList />
+              </div>
+            </TabsContent>
+            <TabsContent value="table">
+              <CampaignInsightsTable />
+            </TabsContent>
+          </Tabs>
         </div>
       </main>
       <Footer />
